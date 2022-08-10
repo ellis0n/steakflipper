@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #e6461686;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.logo {
+  width: 20vw;
+  max-width: 40%;
+}
+
+.userSelect {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin: auto 2%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  padding: 12px;
 }
