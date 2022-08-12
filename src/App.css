@@ -35,23 +35,26 @@ body {
   }
 }
 .logo {
-  width: 20vw;
-  max-width: 40%;
+  margin: auto;
+  /* width: 20vh; */
+  max-width: 30%;
 }
 
 .userSelect {
   display: flex;
   flex-direction: column;
+  justify-items: center;
 }
 
-button {
-  margin: auto 2%;
-  height: 100%;
-  background-color: black;
+/* button {
+  margin: auto;
+  width: 120px;
+  height: 90%;
+  background-color: brown;
   color: white;
-  border-radius: 12px;
-  padding: 12px;
-}
+  border-radius: 1px;
+  padding: 12px 20px;
+} */
 
 .navBar {
   display: flex;
@@ -65,4 +68,19 @@ button {
   color: black;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.popup {
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: white;
+  margin: auto;
+  padding-bottom: 12%;
+  z-index: 0;
+  flex-direction: column;
+  width: 80%;
+}
+
+.infoText {
+  margin: auto 12%;
 }

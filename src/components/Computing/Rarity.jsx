@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import Conversion from "./Conversion";
-import Timer from "./Timer";
+import Countdown from "./Countdown";
 
 // Assigns the timer length in milliseconds based on user input
-const RaritySelect = (props) => {
+const Rarity = (props) => {
   let cookSetting = "";
   const [cookTime, setCookTime] = useState(null);
   const [showMenu, setShowMenu] = useState("flex");
@@ -11,22 +10,27 @@ const RaritySelect = (props) => {
   const handleRarity = (e) => {
     cookSetting = e.target.value;
     if (cookSetting === "rare") {
-      setCookTime(90000);
+      setCookTime(10);
     } else if (cookSetting === "medium-rare") {
-      setCookTime(120000);
+      setCookTime(120);
     } else if (cookSetting === "medium") {
-      setCookTime(180000);
+      setCookTime(180);
     } else if (cookSetting === "medium-well") {
-      setCookTime(240000);
+      setCookTime(240);
     } else if (cookSetting === "well") {
-      setCookTime(300000);
+      setCookTime(300);
     }
     setShowMenu("none");
+    return cookTime;
   };
-  // return cookTime;
 
   return (
     <div>
+      {/* {cookTime ? ( */}
+      <Countdown cookTime={cookTime} setIndex={props.setIndex} />
+      {/* ) : (
+        <span> How do you like your steak...</span>
+      )} */}
       <div className="userSelect" style={{ display: showMenu }}>
         <button onClick={handleRarity} value="rare">
           Rare
@@ -44,9 +48,8 @@ const RaritySelect = (props) => {
           Well Done
         </button>
       </div>
-      <Timer cookTime={cookTime} />
     </div>
   );
 };
 
-export default RaritySelect;
+export default Rarity;

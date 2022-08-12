@@ -3,63 +3,38 @@ import Conversion from "./Conversion";
 
 const Timer = ({ cookTime }) => {
   console.log(cookTime);
-
-  const convertTime = (cookTime) => {
-    const minutes = Math.floor((cookTime % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((cookTime % (1000 * 60)) / 1000);
-    console.log(minutes, seconds);
-    return [minutes, seconds];
-  };
-
-  const useCountdown = (cookTime) => {
-    const countDownDate = new Date(cookTime).getTime();
-    const [countDown, setCountDown] = useState("");
-
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setCountDown(countDownDate - new Date().getTime());
+  const [time, setTime] = useState(cookTime);
+  const [running, setRunning] = useState(false);
+  useEffect(() => {
+    let i;
+    if (running) {
+      i = setInterval(() => {
+        setTime((prev) => prev - 1);
       }, 1000);
-
-      return () => clearInterval(interval);
-    }, [countDownDate]);
-
-    return convertTime(countDown);
-  };
-
-  const ShowCounter = (minutes, seconds) => {
-    return (
-      <div className="show-counter">
-        <TimerDisplay value={minutes} type={"Mins"} />
-        <p>:</p>
-        <TimerDisplay value={seconds} type={"Seconds"} />
-      </div>
-    );
-  };
-
-  const CountdownTimer = (cookTime) => {
-    const [minutes, seconds] = useCountdown(cookTime);
-
-    if (minutes + seconds <= 0) {
-      return <div>FLIP</div>;
-    } else {
-      return <ShowCounter minutes={minutes} seconds={seconds} />;
+    } else if (!running) {
+      clearInterval(i);
     }
-  };
-  const TimerDisplay = ({ value, type, isDanger }) => {
-    return (
-      <div className={isDanger ? "countdown danger" : "countdown"}>
-        <p>{value}</p>
-        <span>{type}</span>
-      </div>
-    );
-  };
+    return () => clearInterval(i);
+  }, [running]);
+
   return (
-    <div>
-      {cookTime}
-      <Conversion cookTime={cookTime} />
-      <a href="./app">Restart</a>
+    <div className="stopwatch">
+      <div className="numbers">
+        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-1)}:</span>
+
+        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+        <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+      </div>
+      <div className="buttons">
+        <button onClick={() => setRunning(true)}>Start</button>
+        <button onClick={() => setRunning(false)}>Stop</button>
+        <button onClick={() => setTime(0)}>Reset</button>
+      </div>
+      <div>
+        <Conversion cookTime={cookTime} />
+        <a href="./app">Restart</a>
+      </div>
     </div>
   );
 };
-
 export default Timer;
