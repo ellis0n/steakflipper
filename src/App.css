@@ -84,3 +84,11 @@ body {
 .infoText {
   margin: auto 12%;
 }
+
+.preFlip {
+  display: block;
+}
+
+.postFlip {
+  display: block;
+}

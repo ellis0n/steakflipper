@@ -1,11 +1,11 @@
-import React, { useEffect, useReducer } from "react";
-import Conversion from "./Conversion";
+import React, { useEffect, useReducer, useState } from "react";
 
-const Countdown = ({ cookTime }) => {
+const Countdown = ({ cookTime, isActive, paused }) => {
+  const [resetter, setResetter] = useState(true);
   const initialState = {
     length: cookTime,
-    paused: false,
-    flip: false,
+    paused: paused,
+    isActive: isActive,
   };
 
   const reducer = (state, action) => {
@@ -14,29 +14,31 @@ const Countdown = ({ cookTime }) => {
         return { ...state, paused: !state.paused };
       }
 
+      case "reset": {
+        if (state.paused === false) {
+          return { ...state, paused: !state.paused };
+        }
+        return {
+          ...state,
+          length: cookTime,
+        };
+      }
+
       case "tick": {
         if (state.paused) {
           return state;
         } else {
           let newState = { ...state, length: state.length - 1 };
           if (newState.length === 0) {
+            console.log("zilch");
             action.payload(newState);
-          }
-          if (newState.length === 0 && state.flip) {
-            newState.length = cookTime;
           }
           return newState;
         }
       }
 
-      case "toggle_flip": {
-        console.log("Toggle Flip");
-        console.log(state);
-        return { ...state, length: cookTime, flip: !state.flip };
-      }
-
       default: {
-        return state;
+        return initialState;
       }
     }
   };
@@ -56,33 +58,28 @@ const Countdown = ({ cookTime }) => {
     return function clearTimer() {
       clearInterval(timerId);
     };
-  }, []);
+  }, [resetter]);
 
   const handlePause = (e) => {
     dispatch({ type: "toggle_paused" });
   };
 
-  const handleFlip = (e) => {
-    dispatch({ type: "toggle_flip" });
+  const reset = (e) => {
+    setResetter(!resetter);
+    return dispatch({ type: "reset" });
   };
-
   return (
+    // <div style={{ display: display }}>
     <div>
       <div>
-        {state.length > 0 ? (
-          <h3>
-            <Conversion cookTime={initialState.length} />
-            {state.length}
-          </h3>
-        ) : (
-          <h3>TIME TO FLIP!</h3>
-        )}
+        {<h3>{state.length}</h3>}
+        {/* {state.length > 0 ? <h3>{state.length}</h3> : <h3>TIME TO FLIP!</h3>} */}
       </div>
-      <button onClick={handlePause}>Start/Stop</button>
+      <button onClick={handlePause}>Start/Pause</button>
+      {state.length === 0 ? <button onClick={reset}>Flip!</button> : null}
       <button>
         <a href="./app">Restart</a>
       </button>
-      {state.length === 0 ? <button onClick={handleFlip}>Flip!</button> : null}
     </div>
   );
 };

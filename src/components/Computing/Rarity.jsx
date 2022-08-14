@@ -26,11 +26,16 @@ const Rarity = (props) => {
 
   return (
     <div>
-      {/* {cookTime ? ( */}
-      <Countdown cookTime={cookTime} setIndex={props.setIndex} />
-      {/* ) : (
+      {cookTime ? (
+        <Countdown cookTime={cookTime} setIndex={props.setIndex} />
+      ) : (
         <span> How do you like your steak...</span>
-      )} */}
+      )}
+      {cookTime ? (
+        <Countdown cookTime={cookTime} setIndex={props.setIndex} />
+      ) : (
+        <span> How do you like your steak...</span>
+      )}
       <div className="userSelect" style={{ display: showMenu }}>
         <button onClick={handleRarity} value="rare">
           Rare

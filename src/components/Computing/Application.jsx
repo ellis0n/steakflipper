@@ -3,13 +3,14 @@ import Countdown from "./Countdown";
 
 const Application = () => {
   const [cookTime, setCookTime] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [showMenu, setShowMenu] = useState("flex");
 
   const handleRarity = (e) => {
     let cookSetting = "";
     cookSetting = e.target.value;
     if (cookSetting === "rare") {
-      setCookTime(10);
+      setCookTime(2);
     } else if (cookSetting === "medium-rare") {
       setCookTime(120);
     } else if (cookSetting === "medium") {
@@ -20,17 +21,37 @@ const Application = () => {
       setCookTime(300);
     }
     setShowMenu("none");
-    console.log(cookTime);
     return cookTime;
   };
 
   return (
     <div>
-      {cookTime ? (
-        <Countdown cookTime={cookTime} />
-      ) : (
-        <h2> How do you like your steak...</h2>
-      )}
+      <div className="preFlip">
+        {cookTime ? (
+          <Countdown
+            cookTime={cookTime}
+            isActive={activeIndex === 0}
+            onShow={() => setActiveIndex(0)}
+            paused={true}
+            display="block"
+          />
+        ) : (
+          <h2> How do you like your steak...</h2>
+        )}
+      </div>
+      {/* <div className="postFlip">
+        {cookTime ? (
+          <Countdown
+            cookTime={10}
+            isActive={activeIndex === 1}
+            onShow={() => setActiveIndex(1)}
+            paused={true}
+          />
+        ) : (
+          <h2>"Glen" </h2>
+        )}
+      </div> */}
+
       <div className="userSelect" style={{ display: showMenu }}>
         <button onClick={handleRarity} value="rare">
           Rare
