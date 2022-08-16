@@ -8,7 +8,6 @@ const Countdown = ({ cookTime }) => {
     paused: true,
     reset: false,
     message: "Flip it! 🥩",
-    display: "block",
   };
 
   const reducer = (state, action) => {
@@ -41,10 +40,6 @@ const Countdown = ({ cookTime }) => {
 
       case "change_message": {
         return { ...state, message: "Finished 😋" };
-      }
-
-      case "change_display": {
-        return { ...state, display: "none" };
       }
 
       default: {
@@ -86,7 +81,7 @@ const Countdown = ({ cookTime }) => {
       <div style={{ display: state.display }}>
         <div>
           {state.length > 0 ? (
-            <h3>{state.length} seconds... 👀</h3>
+            <h3> {state.length} seconds... 👀 </h3>
           ) : (
             <h3>{state.message} </h3>
           )}
@@ -99,7 +94,9 @@ const Countdown = ({ cookTime }) => {
             </button>
           ) : null
         ) : (
-          <button onClick={handlePause}>Start/Pause</button>
+          <button className="pause_btn" onClick={handlePause}>
+            ⏯
+          </button>
         )}
 
         <button>
