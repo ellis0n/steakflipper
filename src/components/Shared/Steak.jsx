@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Info from "../Main/Info";
-import { showMenu } from "../Computing/Rarity";
 
 const Steak = () => {
   const [rotateSteak, setRotateSteak] = useState("");

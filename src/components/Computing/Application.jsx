@@ -28,29 +28,11 @@ const Application = () => {
     <div>
       <div className="preFlip">
         {cookTime ? (
-          <Countdown
-            cookTime={cookTime}
-            isActive={activeIndex === 0}
-            onShow={() => setActiveIndex(0)}
-            paused={true}
-            display="block"
-          />
+          <Countdown cookTime={cookTime} isActive={activeIndex === 0} />
         ) : (
-          <h2> How do you like your steak...</h2>
+          <h2> How do you like your steak? 🤔</h2>
         )}
       </div>
-      {/* <div className="postFlip">
-        {cookTime ? (
-          <Countdown
-            cookTime={10}
-            isActive={activeIndex === 1}
-            onShow={() => setActiveIndex(1)}
-            paused={true}
-          />
-        ) : (
-          <h2>"Glen" </h2>
-        )}
-      </div> */}
 
       <div className="userSelect" style={{ display: showMenu }}>
         <button onClick={handleRarity} value="rare">

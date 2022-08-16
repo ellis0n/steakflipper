@@ -1,26 +1,29 @@
 import React, { useEffect, useReducer, useState } from "react";
+import Steak from "../Shared/Steak";
 
-const Countdown = ({ cookTime, isActive, paused }) => {
-  const [resetter, setResetter] = useState(true);
+const Countdown = ({ cookTime }) => {
+  const [resetter, setResetter] = useState(false);
   const initialState = {
     length: cookTime,
-    paused: paused,
-    isActive: isActive,
+    paused: true,
+    reset: false,
+    message: "Flip it! 🥩",
+    display: "block",
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case "toggle_paused": {
+      case "toggle_paused":
         return { ...state, paused: !state.paused };
-      }
 
-      case "reset": {
-        if (state.paused === false) {
-          return { ...state, paused: !state.paused };
-        }
+      case "flip": {
         return {
           ...state,
-          length: cookTime,
+          paused: true,
+          ...state,
+          length: initialState.length,
+          ...state,
+          reset: true,
         };
       }
 
@@ -30,15 +33,22 @@ const Countdown = ({ cookTime, isActive, paused }) => {
         } else {
           let newState = { ...state, length: state.length - 1 };
           if (newState.length === 0) {
-            console.log("zilch");
             action.payload(newState);
           }
           return newState;
         }
       }
 
+      case "change_message": {
+        return { ...state, message: "Finished 😋" };
+      }
+
+      case "change_display": {
+        return { ...state, display: "none" };
+      }
+
       default: {
-        return initialState;
+        console.log(state.length);
       }
     }
   };
@@ -46,17 +56,17 @@ const Countdown = ({ cookTime, isActive, paused }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    let timerId;
-    timerId = setInterval(() => {
+    let timer;
+    timer = setInterval(() => {
       dispatch({
         type: "tick",
         payload: () => {
-          clearInterval(timerId);
+          clearInterval(timer);
         },
       });
     }, 1000);
     return function clearTimer() {
-      clearInterval(timerId);
+      clearInterval(timer);
     };
   }, [resetter]);
 
@@ -64,22 +74,41 @@ const Countdown = ({ cookTime, isActive, paused }) => {
     dispatch({ type: "toggle_paused" });
   };
 
-  const reset = (e) => {
-    setResetter(!resetter);
-    return dispatch({ type: "reset" });
-  };
+  function flip(e) {
+    setResetter(true);
+    dispatch({ type: "force_pause" });
+    dispatch({ type: "flip" });
+    dispatch({ type: "change_message" });
+  }
+
   return (
-    // <div style={{ display: display }}>
     <div>
-      <div>
-        {<h3>{state.length}</h3>}
-        {/* {state.length > 0 ? <h3>{state.length}</h3> : <h3>TIME TO FLIP!</h3>} */}
+      <div style={{ display: state.display }}>
+        <div>
+          {state.length > 0 ? (
+            <h3>{state.length} seconds... 👀</h3>
+          ) : (
+            <h3>{state.message} </h3>
+          )}
+        </div>
+
+        {state.length === 0 ? (
+          !resetter ? (
+            <button className="flip_btn" onClick={flip}>
+              Flip!
+            </button>
+          ) : null
+        ) : (
+          <button onClick={handlePause}>Start/Pause</button>
+        )}
+
+        <button>
+          <a href="./app">Restart</a>
+        </button>
       </div>
-      <button onClick={handlePause}>Start/Pause</button>
-      {state.length === 0 ? <button onClick={reset}>Flip!</button> : null}
-      <button>
-        <a href="./app">Restart</a>
-      </button>
+      <div>
+        <Steak />
+      </div>
     </div>
   );
 };
