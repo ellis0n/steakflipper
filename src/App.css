@@ -6,71 +6,46 @@ body {
   text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(35px + 6vmin);
+  max-width: 100%;
+  color: gold;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .logo {
   margin: auto;
   /* width: 20vh; */
   max-width: 30%;
 }
 
-.userSelect {
+nav {
   display: flex;
-  flex-direction: column;
-  justify-items: center;
-}
-
-/* button {
-  margin: auto;
-  width: 120px;
-  height: 90%;
-  background-color: brown;
-  color: white;
-  border-radius: 1px;
-  padding: 12px 20px;
-} */
-
-.navBar {
-  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .navLink {
   text-decoration: none;
   margin: 0% 2%;
-  padding: 0% 1%;
+  padding: 0% 5%;
   background-color: white;
   color: black;
   border: 1px solid black;
   border-radius: 5px;
 }
 
+.navLink:hover {
+  background-color: gold;
+  border-radius: 12px;
+}
+
 .popup {
+  display: block;
   border: 2px solid white;
   border-radius: 10px;
   background-color: white;
@@ -78,17 +53,47 @@ body {
   padding-bottom: 12%;
   z-index: 0;
   flex-direction: column;
-  width: 80%;
+  /* width: 80%; */
+  top: 100%;
+  /* position: relative; */
+  transition: all 10s ease-out;
+  height: 100%;
 }
 
 .infoText {
   margin: auto 12%;
 }
 
-.preFlip {
-  display: block;
+.userSelect {
+  display: flex;
+  flex-direction: column;
 }
 
-.postFlip {
-  display: block;
+.raritySelect {
+  width: 90%;
+  border-radius: 20px;
+}
+
+.rare {
+  background-color: rgba(170 50 31);
+}
+.medium-rare {
+  background-color: rgba(130 50 31);
+}
+.medium {
+  background-color: rgba(113 50 31);
+}
+.medium-well {
+  background-color: rgba(90 50 31);
+}
+.well {
+  background-color: rgba(75 50 31);
+}
+
+button {
+  margin: auto;
+  height: 90%;
+  background-color: brown;
+  color: white;
+  padding: 12px 20px;
 }

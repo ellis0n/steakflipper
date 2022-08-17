@@ -1,8 +1,8 @@
 import React from "react";
-import Home from "./components/Main/Home";
-import Application from "./components/Computing/Application";
-import About from "./components/About/About";
-import Navbar from "./components/Shared/Navbar";
+import Home from "./components/Home";
+import Application from "./components/Application";
+import About from "./components/About";
+import Navbar from "./components/Navbar";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 

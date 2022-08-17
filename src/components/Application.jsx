@@ -35,19 +35,39 @@ const Application = () => {
       </div>
 
       <div className="userSelect" style={{ display: showMenu }}>
-        <button onClick={handleRarity} value="rare">
+        <button
+          className="raritySelect rare"
+          onClick={handleRarity}
+          value="rare"
+        >
           Rare
         </button>
-        <button onClick={handleRarity} value="medium-rare">
+        <button
+          className="raritySelect medium-rare"
+          onClick={handleRarity}
+          value="medium-rare"
+        >
           Medium-Rare
         </button>
-        <button onClick={handleRarity} value="medium">
+        <button
+          className="raritySelect medium"
+          onClick={handleRarity}
+          value="medium"
+        >
           Medium
         </button>
-        <button onClick={handleRarity} value="medium-well">
+        <button
+          className="raritySelect medium-well"
+          onClick={handleRarity}
+          value="medium-well"
+        >
           Medium-Well
         </button>
-        <button onClick={handleRarity} value="well">
+        <button
+          className="raritySelect well"
+          onClick={handleRarity}
+          value="well"
+        >
           Well Done
         </button>
       </div>

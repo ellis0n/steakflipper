@@ -1,8 +1,9 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Steak from "../Shared/Steak";
 
 const Countdown = ({ cookTime }) => {
+  // Resetter keeps track of reset status and is used in  the useEffect depency array below
   const [resetter, setResetter] = useState(false);
+
   const initialState = {
     length: cookTime,
     paused: true,
@@ -12,13 +13,15 @@ const Countdown = ({ cookTime }) => {
 
   const reducer = (state, action) => {
     switch (action.type) {
+      // If pause button pressed:
       case "toggle_paused":
         return { ...state, paused: !state.paused };
 
+      // If flip button pressed:
       case "flip": {
         return {
           ...state,
-          paused: true,
+          paused: false,
           ...state,
           length: initialState.length,
           ...state,
@@ -26,6 +29,7 @@ const Countdown = ({ cookTime }) => {
         };
       }
 
+      // Handles timer decrement and pause
       case "tick": {
         if (state.paused) {
           return state;
@@ -38,6 +42,7 @@ const Countdown = ({ cookTime }) => {
         }
       }
 
+      // Notifies user that the program has finished
       case "change_message": {
         return { ...state, message: "Finished 😋" };
       }
@@ -50,6 +55,7 @@ const Countdown = ({ cookTime }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Set timer and interval, spreads ar
   useEffect(() => {
     let timer;
     timer = setInterval(() => {
@@ -65,6 +71,7 @@ const Countdown = ({ cookTime }) => {
     };
   }, [resetter]);
 
+  //
   const handlePause = (e) => {
     dispatch({ type: "toggle_paused" });
   };
@@ -76,12 +83,20 @@ const Countdown = ({ cookTime }) => {
     dispatch({ type: "change_message" });
   }
 
+  let minute = Math.floor(state.length / 60);
+  let rest_seconds = state.length % 60;
+
   return (
     <div>
       <div style={{ display: state.display }}>
         <div>
           {state.length > 0 ? (
-            <h3> {state.length} seconds... 👀 </h3>
+            <h3>
+              {minute.toString().padStart(2) +
+                ":" +
+                rest_seconds.toString().padStart(2, "0")}
+              👀
+            </h3>
           ) : (
             <h3>{state.message} </h3>
           )}
@@ -102,9 +117,6 @@ const Countdown = ({ cookTime }) => {
         <button>
           <a href="./app">Restart</a>
         </button>
-      </div>
-      <div>
-        <Steak />
       </div>
     </div>
   );

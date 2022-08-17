@@ -1,13 +1,9 @@
 import React from "react";
-import Steak from "../Shared/Steak";
+import Steak from "./Steak";
 import Info from "./Info";
 
 const Home = () => {
-  return (
-    <div>
-      <Steak />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;
