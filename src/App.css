@@ -17,12 +17,17 @@ body {
   justify-content: center;
   font-size: calc(20px + 5vmin);
   max-width: 100%;
-  color: darkred;
+  color: beige;
+  background: brown;
+  border: 4px solid beige;
+  border-radius: 12px;
+  margin: 4% 2%;
+  padding: 10px 10px;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: center;
+.App-header:hover {
+  background-color: darkred;
+  color: brown;
 }
 
 .timerClock {
@@ -34,13 +39,9 @@ body {
   justify-content: center;
   font-size: calc(60px + 6vmin);
   font-family: "Silkscreen", cursive;
-  color: black;
-  background: rgba(255, 255, 255, 0.81);
-
+  color: darkred;
+  background: beige;
   margin: 8% auto;
-}
-
-.timerReadout {
 }
 
 .timerMessage {
@@ -48,18 +49,21 @@ body {
   font-size: calc(60px + 6vmin);
 }
 
-.logo {
-  padding-top: 9%;
-  margin: auto;
-  width: 20vh;
-  max-width: 30%;
+.steakWrapper {
+  display: flex;
+  justify-content: center;
+  bottom: 0px;
+}
+.steak {
+  width: 50vh;
+  max-width: 100%;
 }
 
 .cardTemplate {
   display: flex;
-  border: 2px solid white;
+  border: 12px solid beige;
   border-radius: 10px;
-  background-color: white;
+  background-color: beige;
   z-index: 0;
   flex-direction: column;
   border-radius: 16px;
@@ -79,12 +83,13 @@ body {
 
 .back {
   transform: rotateY(-180deg);
-  background-color: black;
-  color: white;
+  background-color: darkred;
+  color: beige;
 }
 
 .front {
-  background-color: white;
+  background-color: beige;
+  border: 12px solid brown;
 }
 
 .card:hover .front {
@@ -98,7 +103,6 @@ body {
 h2 {
   text-align: center;
   margin: 2vh;
-  /* border: 2px solid black; */
 }
 
 li {
@@ -182,39 +186,81 @@ button:hover {
   margin: 0% 2%;
   padding: 0% 5%;
   font-size: 20px;
-  background: black;
-  color: white;
+  background: brown;
+  color: beige;
   border-radius: 8px;
 }
 .navLink:hover {
-  color: black;
-  background: white;
+  color: darkred;
+  background: beige;
   transition: transform 1500ms, background 1750ms;
 }
 
 #restart {
   text-decoration: none;
+  background-color: beige;
 }
 #restart:visited {
   color: black;
+  background-color: beige;
 }
 
 .pause_btn,
 .flip_btn {
-  background-color: black;
+  background-color: darkred;
   transform: translateX(22px);
 }
 
 .pause_btn:hover,
 .flip_btn:hover {
-  background-color: white;
+  background-color: brown;
   color: black;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  z-index: 2;
+}
+
+.wrapper h2 {
+  box-sizing: border-box;
+  color: beige;
+  border: 4px solid beige;
+  border-radius: 16px;
+  background: darkred;
+  font-size: 3vh;
+  margin: 3vh 5vh;
+  padding: 10px;
+  text-align: center;
+  font-weight: 100;
+  font-style: italic;
+  animation-name: animateSlogan;
+}
+
+.animateSlogan {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes animateSlogan {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 footer {
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: brown;
+  color: beige;
   position: fixed;
   bottom: 0px;
   left: 0px;

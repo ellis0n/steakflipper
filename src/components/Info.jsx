@@ -19,10 +19,10 @@ const Info = ({ showInfo }) => {
         <ul>
           <li>Salt and pepper's all you need.</li>
           <li>Flip once: its the rule.</li>
-          <li>Room-temp the steak!</li>
-          <li>Wait 5 mins before cutting</li>
-          <li>Flip with tongs!</li>
-          <li>Timer based on 1" sirloin cut.</li>
+          <li>Let steak reach room temperature before cooking.</li>
+          <li>Wait 5 mins before cutting. Save the juices!</li>
+          <li>Flip with tongs or spatula!</li>
+          <li>Steakflipper timer is based on 1" sirloin cut.</li>
         </ul>
       </div>
     </div>
