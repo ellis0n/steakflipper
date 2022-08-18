@@ -1,5 +1,4 @@
 import React from "react";
-import Steak from "./Steak";
 import Navbar from "./Navbar";
 import Header from "./Header";
 import Info from "./Info";
@@ -10,8 +9,8 @@ const About = () => {
     <div>
       <Header />
       <Navbar name="aboutNav" />
-      <Steak />
       <Info />
+
       <Footer />
     </div>
   );

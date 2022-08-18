@@ -25,23 +25,27 @@ body {
   justify-content: center;
 }
 
-.timerReadout {
-  margin: 70px;
+.timerClock {
+  font-size: calc(60px + 6vmin);
+}
+
+.timerDisplay {
   display: flex;
   justify-content: center;
   font-size: calc(60px + 6vmin);
   font-family: "Silkscreen", cursive;
-  color: white;
-  background: black;
+  color: black;
+  background: rgba(255, 255, 255, 0.81);
+
+  margin: 8% auto;
 }
 
-.timerDisplay {
-  background-image: url(https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
-  background-position: center;
-  background-size: cover;
-  /* background-color: ; */
-  padding: 20px;
-  margin: 3% 16%;
+.timerReadout {
+}
+
+.timerMessage {
+  font-size: 20px;
+  font-size: calc(60px + 6vmin);
 }
 
 .logo {
@@ -56,22 +60,20 @@ body {
   border: 2px solid white;
   border-radius: 10px;
   background-color: white;
-  padding-bottom: 29%;
   z-index: 0;
   flex-direction: column;
-  /* top: 100%; */
-  border-radius: 15px;
+  border-radius: 16px;
   transition: all 0.8s ease;
   backface-visibility: hidden;
   position: absolute;
-  padding: 1rem;
+  padding: auto;
+  margin-bottom: 200px;
 }
 
 .card {
   display: flex;
   justify-content: center;
   perspective: 150rem;
-  position: relative;
   margin: 2rem;
 }
 
@@ -95,12 +97,20 @@ body {
 
 h2 {
   text-align: center;
+  margin: 2vh;
+  /* border: 2px solid black; */
 }
 
 li {
   text-decoration: none;
   list-style: none;
-  padding: 16px 2px;
+  padding: 10px;
+  margin: 0px;
+  text-align: center;
+}
+ul {
+  margin: 10px;
+  padding: 0;
 }
 
 .infoText {
@@ -149,7 +159,6 @@ button {
   color: white;
   padding: 5px 20px;
   margin: 5px auto;
-  font-family: "Silkscreen", cursive;
 }
 button:hover {
   transform: translateX(-5px);
@@ -180,16 +189,7 @@ button:hover {
 .navLink:hover {
   color: black;
   background: white;
-}
-
-footer {
-  width: 100%;
-  background-color: black;
-  color: white;
-  position: fixed;
-  bottom: 0px;
-  font-size: 12px;
-  text-align: center;
+  transition: transform 1500ms, background 1750ms;
 }
 
 #restart {
@@ -209,4 +209,15 @@ footer {
 .flip_btn:hover {
   background-color: white;
   color: black;
+}
+
+footer {
+  width: 100%;
+  background-color: black;
+  color: white;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  font-size: 12px;
+  text-align: center;
 }

@@ -11,8 +11,7 @@ const Info = ({ showInfo }) => {
           <li>3. Place steak on grill</li>
           <li>4. Flip steak on prompt</li>
           <li>5. Press Flip button</li>
-          <li>6. Remove from grill when Finished</li>
-          <li>7. Press Reset to Cook Another</li>
+          <li>6. Remove when finished</li>
         </ul>
       </div>
       <div className="cardTemplate back">
@@ -20,10 +19,10 @@ const Info = ({ showInfo }) => {
         <ul>
           <li>Salt and pepper's all you need.</li>
           <li>Flip once: its the rule.</li>
-          <li>Always get the steak to room temp first.</li>
-          <li>Let steak sit for five minutes after cooking.</li>
-          <li>Always flip with tongs!</li>
-          <li>Steakflipper assumes a 1" sirloin cut.</li>
+          <li>Room-temp the steak!</li>
+          <li>Wait 5 mins before cutting</li>
+          <li>Flip with tongs!</li>
+          <li>Timer based on 1" sirloin cut.</li>
         </ul>
       </div>
     </div>

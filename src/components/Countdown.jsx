@@ -92,13 +92,13 @@ const Countdown = ({ cookTime }) => {
       <div className="timerDisplay">
         <div className="timerReadout">
           {state.length > 0 ? (
-            <div className="">
+            <div className="timerClock">
               {minute.toString().padStart(2) +
                 ":" +
                 seconds.toString().padStart(2, "0")}
             </div>
           ) : (
-            <div className="">{state.message} </div>
+            <div className="timerMessage">{state.message} </div>
           )}
         </div>
       </div>
