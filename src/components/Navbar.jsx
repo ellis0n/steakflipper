@@ -1,19 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ name }) => {
+  console.log(name);
   return (
-    <div className="navbar">
+    <div>
       <nav>
-        <Link className="navLink" to="/">
-          Home
-        </Link>
-        <Link className="navLink" to="/app">
-          App
-        </Link>
-        <Link className="navLink" to="/about">
-          About
-        </Link>
+        <div className={name}>
+          {name === "homeNav" ? null : (
+            <Link className="navLink" to="/">
+              Home
+            </Link>
+          )}
+          {name === "appNav" ? null : (
+            <Link className="navLink" to="/app">
+              Timer
+            </Link>
+          )}
+          {name === "aboutNav" ? null : (
+            <Link className="navLink" to="/about">
+              About
+            </Link>
+          )}
+        </div>
       </nav>
     </div>
   );

@@ -1,9 +1,14 @@
 import React from "react";
-import Steak from "./Steak";
-import Info from "./Info";
+import Header from "./Header";
+import Navbar from "./Navbar";
 
 const Home = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Header />
+      <Navbar name="homeNav" />
+    </div>
+  );
 };
 
 export default Home;

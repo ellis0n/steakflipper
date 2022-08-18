@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
+
 body {
   background-color: #ca3309ce;
+  font-family: "Silkscreen", cursive;
 }
 
 .App {
@@ -12,52 +15,92 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(35px + 6vmin);
+  font-size: calc(20px + 5vmin);
   max-width: 100%;
-  color: gold;
+  color: darkred;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.timerReadout {
+  margin: 70px;
+  display: flex;
+  justify-content: center;
+  font-size: calc(60px + 6vmin);
+  font-family: "Silkscreen", cursive;
+  color: white;
+  background: black;
+}
+
+.timerDisplay {
+  background-image: url(https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+  background-position: center;
+  background-size: cover;
+  /* background-color: ; */
+  padding: 20px;
+  margin: 3% 16%;
 }
 
 .logo {
+  padding-top: 9%;
   margin: auto;
-  /* width: 20vh; */
+  width: 20vh;
   max-width: 30%;
 }
 
-nav {
+.cardTemplate {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.navLink {
-  text-decoration: none;
-  margin: 0% 2%;
-  padding: 0% 5%;
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.navLink:hover {
-  background-color: gold;
-  border-radius: 12px;
-}
-
-.popup {
-  display: block;
   border: 2px solid white;
   border-radius: 10px;
   background-color: white;
-  margin: auto;
-  padding-bottom: 12%;
+  padding-bottom: 29%;
   z-index: 0;
   flex-direction: column;
-  /* width: 80%; */
-  top: 100%;
-  /* position: relative; */
-  transition: all 10s ease-out;
-  height: 100%;
+  /* top: 100%; */
+  border-radius: 15px;
+  transition: all 0.8s ease;
+  backface-visibility: hidden;
+  position: absolute;
+  padding: 1rem;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  perspective: 150rem;
+  position: relative;
+  margin: 2rem;
+}
+
+.back {
+  transform: rotateY(-180deg);
+  background-color: black;
+  color: white;
+}
+
+.front {
+  background-color: white;
+}
+
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(0deg);
+}
+
+h2 {
+  text-align: center;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+  padding: 16px 2px;
 }
 
 .infoText {
@@ -78,22 +121,92 @@ nav {
   background-color: rgba(170 50 31);
 }
 .medium-rare {
-  background-color: rgba(130 50 31);
+  background-color: rgba(150 50 31);
 }
 .medium {
-  background-color: rgba(113 50 31);
+  background-color: rgba(123 50 31);
 }
 .medium-well {
-  background-color: rgba(90 50 31);
+  background-color: rgba(108 50 31);
 }
 .well {
-  background-color: rgba(75 50 31);
+  background-color: rgb(94, 53, 43);
 }
 
 button {
+  display: flex;
+  justify-content: center;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: calc(20px + 3vmin);
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 320ms, background 200ms;
+  font-family: "Silkscreen", cursive;
   margin: auto;
-  height: 90%;
-  background-color: brown;
   color: white;
-  padding: 12px 20px;
+  padding: 5px 20px;
+  margin: 5px auto;
+  font-family: "Silkscreen", cursive;
+}
+button:hover {
+  transform: translateX(-5px);
+}
+
+.homeNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.aboutNav,
+.appNav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
+
+.navLink {
+  text-decoration: none;
+  margin: 0% 2%;
+  padding: 0% 5%;
+  font-size: 20px;
+  background: black;
+  color: white;
+  border-radius: 8px;
+}
+.navLink:hover {
+  color: black;
+  background: white;
+}
+
+footer {
+  width: 100%;
+  background-color: black;
+  color: white;
+  position: fixed;
+  bottom: 0px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#restart {
+  text-decoration: none;
+}
+#restart:visited {
+  color: black;
+}
+
+.pause_btn,
+.flip_btn {
+  background-color: black;
+  transform: translateX(22px);
+}
+
+.pause_btn:hover,
+.flip_btn:hover {
+  background-color: white;
+  color: black;
 }

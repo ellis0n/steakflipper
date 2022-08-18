@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import Countdown from "./Countdown";
-
+import Navbar from "./Navbar";
+import Header from "./Header";
+import Footer from "./Footer";
 const Application = () => {
   const [cookTime, setCookTime] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [showMenu, setShowMenu] = useState("flex");
 
   const handleRarity = (e) => {
     let cookSetting = "";
     cookSetting = e.target.value;
     if (cookSetting === "rare") {
-      setCookTime(2);
+      setCookTime(6);
     } else if (cookSetting === "medium-rare") {
       setCookTime(120);
     } else if (cookSetting === "medium") {
@@ -26,13 +27,16 @@ const Application = () => {
 
   return (
     <div>
-      <div className="preFlip">
-        {cookTime ? (
-          <Countdown cookTime={cookTime} isActive={activeIndex === 0} />
-        ) : (
-          <h2> How do you like your steak? 🤔</h2>
-        )}
-      </div>
+      <Header />
+      <Navbar name="appNav" />
+
+      {cookTime ? (
+        <Countdown cookTime={cookTime} />
+      ) : (
+        <div className="wrapper">
+          <h2> How do you like your steak?</h2>
+        </div>
+      )}
 
       <div className="userSelect" style={{ display: showMenu }}>
         <button
@@ -71,6 +75,7 @@ const Application = () => {
           Well Done
         </button>
       </div>
+      <Footer />
     </div>
   );
 };

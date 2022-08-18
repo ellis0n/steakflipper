@@ -7,8 +7,7 @@ const Countdown = ({ cookTime }) => {
   const initialState = {
     length: cookTime,
     paused: true,
-    reset: false,
-    message: "Flip it! 🥩",
+    message: "Flip it! ",
   };
 
   const reducer = (state, action) => {
@@ -44,7 +43,7 @@ const Countdown = ({ cookTime }) => {
 
       // Notifies user that the program has finished
       case "change_message": {
-        return { ...state, message: "Finished 😋" };
+        return { ...state, message: "Finished" };
       }
 
       default: {
@@ -71,11 +70,12 @@ const Countdown = ({ cookTime }) => {
     };
   }, [resetter]);
 
-  //
+  // If pause button pressed
   const handlePause = (e) => {
     dispatch({ type: "toggle_paused" });
   };
 
+  // If flip button pressed
   function flip(e) {
     setResetter(true);
     dispatch({ type: "force_pause" });
@@ -83,41 +83,43 @@ const Countdown = ({ cookTime }) => {
     dispatch({ type: "change_message" });
   }
 
+  // Create variables for MM:SS timer display
   let minute = Math.floor(state.length / 60);
-  let rest_seconds = state.length % 60;
+  let seconds = state.length % 60;
 
   return (
     <div>
-      <div style={{ display: state.display }}>
-        <div>
+      <div className="timerDisplay">
+        <div className="timerReadout">
           {state.length > 0 ? (
-            <h3>
+            <div className="">
               {minute.toString().padStart(2) +
                 ":" +
-                rest_seconds.toString().padStart(2, "0")}
-              👀
-            </h3>
+                seconds.toString().padStart(2, "0")}
+            </div>
           ) : (
-            <h3>{state.message} </h3>
+            <div className="">{state.message} </div>
           )}
         </div>
-
-        {state.length === 0 ? (
-          !resetter ? (
-            <button className="flip_btn" onClick={flip}>
-              Flip!
-            </button>
-          ) : null
-        ) : (
-          <button className="pause_btn" onClick={handlePause}>
-            ⏯
-          </button>
-        )}
-
-        <button>
-          <a href="./app">Restart</a>
-        </button>
       </div>
+
+      {state.length === 0 ? (
+        !resetter ? (
+          <button className="flip_btn" onClick={flip}>
+            Flip!
+          </button>
+        ) : null
+      ) : (
+        <button className="pause_btn" onClick={handlePause}>
+          {!state.paused ? "Pause" : "Start"}
+        </button>
+      )}
+
+      <button>
+        <a id="restart" href="./app">
+          Restart
+        </a>
+      </button>
     </div>
   );
 };
