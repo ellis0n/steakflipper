@@ -98,7 +98,9 @@ const Countdown = ({ cookTime }) => {
                 seconds.toString().padStart(2, "0")}
             </div>
           ) : (
-            <div className="timerMessage">{state.message} </div>
+            <div className="timerMessage">
+              <span id="message">{state.message}</span>
+            </div>
           )}
         </div>
       </div>

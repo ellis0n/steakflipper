@@ -42,12 +42,13 @@ body {
   color: darkred;
   background: beige;
   margin: 8% auto;
-  border: 12px solid brown;
+  border-top: 12px solid brown;
+  border-bottom: 12px solid brown;
+
   border-radius: 12px;
 }
 
 .timerMessage {
-  font-size: 20px;
   font-size: calc(60px + 6vmin);
 }
 
@@ -273,4 +274,8 @@ footer {
   left: 0px;
   font-size: 12px;
   text-align: center;
+}
+
+#message {
+  font-size: calc(50px + 6vmin);
 }
