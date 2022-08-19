@@ -1,5 +1,5 @@
 import React from "react";
-
+// Goofy footer text generator
 const ticker = [
   "Web app by Glen May",
   "Glen Made This",

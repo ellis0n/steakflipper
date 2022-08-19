@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 import Info from "./Info";
 import Footer from "./Footer";
-import Steak from "./Steak";
 
 const About = () => {
   return (

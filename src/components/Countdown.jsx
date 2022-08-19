@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 
 const Countdown = ({ cookTime }) => {
-  // Resetter keeps track of reset status and is used in  the useEffect depency array below
+  // Resetter keeps track of reset status and is used in the useEffect depency array below, as well as in JS code in return statement.
   const [resetter, setResetter] = useState(false);
 
   const initialState = {
@@ -102,7 +102,7 @@ const Countdown = ({ cookTime }) => {
           )}
         </div>
       </div>
-
+      {/* If timer's ongoing and initial flip not completed, show flip button to reset length */}
       {state.length === 0 ? (
         !resetter ? (
           <button className="flip_btn" onClick={flip}>
@@ -110,11 +110,13 @@ const Countdown = ({ cookTime }) => {
           </button>
         ) : null
       ) : (
+        // If timer ongoing, show pause/start button with dynamic labelling
         <button className="pause_btn" onClick={handlePause}>
           {!state.paused ? "Pause" : "Start"}
         </button>
       )}
 
+      {/* Reloads page */}
       <button>
         <a id="restart" href="./app">
           Restart

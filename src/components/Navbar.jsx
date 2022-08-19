@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ name }) => {
-  console.log(name);
+  // Displays nav bar based on current page
   return (
     <div>
       <nav>

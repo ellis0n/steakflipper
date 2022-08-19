@@ -7,11 +7,12 @@ const Application = () => {
   const [cookTime, setCookTime] = useState(null);
   const [showMenu, setShowMenu] = useState("flex");
 
+  // Assign timer length based on button clicked
   const handleRarity = (e) => {
     let cookSetting = "";
     cookSetting = e.target.value;
     if (cookSetting === "rare") {
-      setCookTime(6);
+      setCookTime(60);
     } else if (cookSetting === "medium-rare") {
       setCookTime(120);
     } else if (cookSetting === "medium") {
@@ -29,15 +30,15 @@ const Application = () => {
     <div>
       <Header />
       <Navbar name="appNav" />
-
+      {/* Display countdown only if user makes input */}
       {cookTime ? (
         <Countdown cookTime={cookTime} />
       ) : (
-        <div className="wrapper">
-          <h2> How do you like your steak?</h2>
+        <div className>
+          <h2 className="prompt"> How do you like your steak?</h2>
         </div>
       )}
-
+      {/* Note: future iteration will turn button into component */}
       <div className="userSelect" style={{ display: showMenu }}>
         <button
           className="raritySelect rare"

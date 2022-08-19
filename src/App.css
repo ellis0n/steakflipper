@@ -42,6 +42,8 @@ body {
   color: darkred;
   background: beige;
   margin: 8% auto;
+  border: 12px solid brown;
+  border-radius: 12px;
 }
 
 .timerMessage {
@@ -160,7 +162,7 @@ button {
   transition: transform 320ms, background 200ms;
   font-family: "Silkscreen", cursive;
   margin: auto;
-  color: white;
+  color: beige;
   padding: 5px 20px;
   margin: 5px auto;
 }
@@ -224,7 +226,7 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(120%);
+  transform: translateX(-50%) translateY(20vh);
   z-index: 2;
 }
 
@@ -235,7 +237,7 @@ button:hover {
   border-radius: 16px;
   background: darkred;
   font-size: 3vh;
-  margin: 3vh 5vh;
+  margin: 6vh 4vh;
   padding: 10px;
   text-align: center;
   font-weight: 100;
@@ -243,8 +245,13 @@ button:hover {
   animation-name: animateSlogan;
 }
 
+.prompt {
+  color: beige;
+  font-style: italic;
+}
+
 .animateSlogan {
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-fill-mode: both;
 }
 @keyframes animateSlogan {
