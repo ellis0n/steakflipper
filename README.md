@@ -1,5 +1,5 @@
 Steakflipper:
 
-A simple countdown timer app for cooking 1" sirloin steaks on the grill.
+A simple countdown timer app for cooking sirloin steaks evenly on the grill.
 
-Created as a beginner's project in using React.
+Created as a beginner's React project.
